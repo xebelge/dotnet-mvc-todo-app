@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Todo Page";
+}
+
+@model IEnumerable<TodoApp.Models.Todo>
+
+<h1>Todo(s)</h1>
+
+@if (Model.Any())
+{
+    <h2>Active Todos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Completed</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var todo in Model.Where(t => !t.Completed))
+            {
+                <tr>
+                    <td>@todo.Title</td>
+                    <td>@todo.Description</td>
+                    <td>No</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Todo", new { id = todo.ID })">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@todo.ID">Delete</a> 
+                        <form method="post" action="@Url.Action("Complete", "Todo", new { id = todo.ID })">
+                            <button type="submit" style="border: none; background-color: transparent; padding: 0; margin: 0; color: green; cursor: pointer;">Complete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h2>Completed Todos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Completed</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var todo in Model.Where(t => t.Completed))
+            {
+                <tr>
+                    <td>@todo.Title</td>
+                    <td>@todo.Description</td>
+                    <td>Yes</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Todo", new { id = todo.ID })">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@todo.ID">Delete</a> 
+                        <form method="post" action="@Url.Action("UndoComplete", "Todo", new { id = todo.ID })">
+                            <button type="submit" style="border: none; background-color: transparent; padding: 0; margin: 0; color: red; cursor: pointer;">Undo Complete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No todo(s) found.</p>
+}
+
+<p>
+    <a asp-controller="TodoList" asp-action="Index">Back to Todo List(s)</a>
+</p>

@@ -1,0 +1,15 @@
+﻿body {
+    background-image: url('/css/images.jpeg');
+    background-size: cover;
+}
+
+.navbar.navbar-expand-sm.navbar-toggleable-sm.navbar-light.bg-white.border-bottom.box-shadow.mb-3{
+    background-image: url('/css/images1.jpeg');
+    background-size: cover;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+    .navbar.navbar-expand-sm.navbar-toggleable-sm.navbar-light.bg-white.border-bottom.box-shadow.mb-3 .nav-link:hover {
+        text-shadow: 0 0 5px white;
+        background-color: lightgray;
+    }

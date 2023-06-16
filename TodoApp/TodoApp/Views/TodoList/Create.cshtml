@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Create Todo List Page";
+}
+@model TodoApp.Models.TodoList
+
+<h1>Create New Todo List</h1>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label>Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index">Back to List</a>
+</form>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

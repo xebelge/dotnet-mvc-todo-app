@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Delete Todo List Page";
+}
+@model TodoApp.Models.TodoList
+
+<h1>Delete Todo List</h1>
+
+<p>Are you sure you want to delete this todo list?</p>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="ID" />
+
+    <div class="form-group">
+        <label>Title</label>
+        <input asp-for="Title" class="form-control" readonly />
+    </div>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index">Back to Todo(s)</a>
+</form>

@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Edit Todo Page";
+}
+@model TodoApp.Models.Todo
+
+<h1>Edit Todo</h1>
+<form asp-action="Edit" asp-route-listId="@Model.ListID">
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="Title" value="@Model.Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="Description" value="@Model.Description" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-controller="TodoList" asp-action="ShowTodos" asp-route-id="@Model.ListID">Back to Todo(s)</a>
+</form>

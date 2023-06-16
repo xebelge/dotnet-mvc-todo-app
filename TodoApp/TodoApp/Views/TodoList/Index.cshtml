@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Todo List Page";
+}
+
+@model IEnumerable<TodoApp.Models.TodoList>
+
+<h1>Todo List(s)</h1>
+
+<p>
+    <a asp-controller="TodoList" asp-action="Create">Add New Todo List</a>
+</p>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var todoList in Model)
+            {
+                <tr>
+                    <td><a href="@Url.Action("ShowTodos", "TodoList", new { id = todoList.ID })">@todoList.Title</a></td>
+                    <td>
+                        <a href="@Url.Action("Edit", "TodoList", new { id = todoList.ID })">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@todoList.ID">Delete</a> |
+                        <a asp-controller="Todo" asp-action="Create" asp-route-listId="@todoList.ID">Add New Todo</a>
+
+                    </td>
+                </tr>
+           
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No todo list(s) found.</p>
+}

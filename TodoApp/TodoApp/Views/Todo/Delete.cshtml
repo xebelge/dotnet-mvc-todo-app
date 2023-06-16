@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Delete Todo Page";
+}
+
+@model TodoApp.Models.Todo
+
+<h1>Delete Todo</h1>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="ID" />
+    <h4>Are you sure you want to delete this Todo?</h4>
+    <div>
+        <label>Title: </label>
+        <span>@Model.Title</span>
+    </div>
+    <div>
+        <label>Description: </label>
+        <span>@Model.Description</span>
+    </div>
+    <div>
+        <label>Completed: </label>
+        <span>@(Model.Completed ? "Yes" : "No")</span>
+    </div>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-controller="TodoList" asp-action="ShowTodos" asp-route-id="@Model.ListID">Back to Todo(s)</a>
+</form>
