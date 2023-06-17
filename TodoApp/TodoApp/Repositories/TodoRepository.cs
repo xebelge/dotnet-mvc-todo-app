@@ -10,11 +10,12 @@ namespace TodoApp.Repositories
     public class TodoRepository : ITodoRepository
     {
         private readonly ApplicationDbContext _context;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        public TodoRepository(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
+        private readonly UserHelper _userHelper;
+
+        public TodoRepository(ApplicationDbContext context, UserHelper userHelper)
         {
             _context = context;
-            _httpContextAccessor = httpContextAccessor;
+            _userHelper = userHelper;
         }
 
         public IEnumerable<Todo> GetTodos()
@@ -35,7 +36,7 @@ namespace TodoApp.Repositories
 
         public void Update(Todo todo)
         {
-            var userId = GetCurrentUserId();
+            var userId = _userHelper.GetCurrentUserId();
             var existingTodo = _context.Todo
                 .FirstOrDefault(t => t.ID == todo.ID && t.TodoList.UserId == userId);
 
@@ -47,7 +48,6 @@ namespace TodoApp.Repositories
                 _context.SaveChanges();
             }
         }
-
 
         public void Delete(int id)
         {
@@ -62,11 +62,6 @@ namespace TodoApp.Repositories
         public IEnumerable<Todo> GetTodosByListId(int listId)
         {
             return _context.Todo.Where(t => t.ListID == listId).ToList();
-        }
-        private string GetCurrentUserId()
-        {
-            var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return userId;
         }
     }
 }

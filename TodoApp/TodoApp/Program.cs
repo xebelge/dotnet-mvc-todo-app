@@ -17,8 +17,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 builder.Services.AddScoped<ITodoListRepository, TodoListRepository>();
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+builder.Services.AddScoped<UserHelper>(); 
 builder.Services.AddHttpContextAccessor();
-
 
 var app = builder.Build();
 
