@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\edabe\\source\\repos\\TodoApp\\TodoApp\\TodoApp.csproj": {}
+    "C:\\Users\\edabe\\OneDrive\\Belgeler\\GitHub\\dotnet-mvc-todo-app\\TodoApp\\TodoApp\\TodoApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\edabe\\source\\repos\\TodoApp\\TodoApp\\TodoApp.csproj": {
+    "C:\\Users\\edabe\\OneDrive\\Belgeler\\GitHub\\dotnet-mvc-todo-app\\TodoApp\\TodoApp\\TodoApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\edabe\\source\\repos\\TodoApp\\TodoApp\\TodoApp.csproj",
+        "projectUniqueName": "C:\\Users\\edabe\\OneDrive\\Belgeler\\GitHub\\dotnet-mvc-todo-app\\TodoApp\\TodoApp\\TodoApp.csproj",
         "projectName": "TodoApp",
-        "projectPath": "C:\\Users\\edabe\\source\\repos\\TodoApp\\TodoApp\\TodoApp.csproj",
+        "projectPath": "C:\\Users\\edabe\\OneDrive\\Belgeler\\GitHub\\dotnet-mvc-todo-app\\TodoApp\\TodoApp\\TodoApp.csproj",
         "packagesPath": "C:\\Users\\edabe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\edabe\\source\\repos\\TodoApp\\TodoApp\\obj\\",
+        "outputPath": "C:\\Users\\edabe\\OneDrive\\Belgeler\\GitHub\\dotnet-mvc-todo-app\\TodoApp\\TodoApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

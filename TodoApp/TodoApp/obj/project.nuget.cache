@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fU0goVSAFcpvnsOEcllBL0/R9Ye+EOEgDL7gdKrRn96OqgQ9YzVcVM8k3O0TBGN9Ib2eRv+C2b4tFOF5NZLLyg==",
+  "dgSpecHash": "eTJG7hbNn9nHC3k7LLWBbNNIm+GJ3+AqX0NaGlhElgC2/WxOgKnBCQayCfoQgrWTMiibUnOc2QDKRqmm5e3C+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\edabe\\source\\repos\\TodoApp\\TodoApp\\TodoApp.csproj",
+  "projectFilePath": "C:\\Users\\edabe\\OneDrive\\Belgeler\\GitHub\\dotnet-mvc-todo-app\\TodoApp\\TodoApp\\TodoApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\edabe\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\edabe\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

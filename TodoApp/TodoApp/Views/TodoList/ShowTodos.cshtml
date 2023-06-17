@@ -27,7 +27,7 @@
                     <td>No</td>
                     <td>
                         <a href="@Url.Action("Edit", "Todo", new { id = todo.ID })">Edit</a> |
-                        <a asp-action="Delete" asp-route-id="@todo.ID">Delete</a> 
+                        <a href="@Url.Action("Delete", "Todo", new { id = todo.ID })">Delete</a> |
                         <form method="post" action="@Url.Action("Complete", "Todo", new { id = todo.ID })">
                             <button type="submit" style="border: none; background-color: transparent; padding: 0; margin: 0; color: green; cursor: pointer;">Complete</button>
                         </form>
@@ -56,7 +56,7 @@
                     <td>Yes</td>
                     <td>
                         <a href="@Url.Action("Edit", "Todo", new { id = todo.ID })">Edit</a> |
-                        <a asp-action="Delete" asp-route-id="@todo.ID">Delete</a> 
+                        <a href="@Url.Action("Delete", "Todo", new { id = todo.ID })">Delete</a> |
                         <form method="post" action="@Url.Action("UndoComplete", "Todo", new { id = todo.ID })">
                             <button type="submit" style="border: none; background-color: transparent; padding: 0; margin: 0; color: red; cursor: pointer;">Undo Complete</button>
                         </form>
