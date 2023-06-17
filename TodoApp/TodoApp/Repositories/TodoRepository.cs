@@ -20,7 +20,7 @@ namespace TodoApp.Repositories
 
         public IEnumerable<Todo> GetTodos()
         {
-            return _context.Todo.ToList();
+            return _context.Todo.AsQueryable();
         }
 
         public Todo GetTodoById(int id)
@@ -37,8 +37,7 @@ namespace TodoApp.Repositories
         public void Update(Todo todo)
         {
             var userId = _userHelper.GetCurrentUserId();
-            var existingTodo = _context.Todo
-                .FirstOrDefault(t => t.ID == todo.ID && t.TodoList.UserId == userId);
+            var existingTodo = _context.Todo.FirstOrDefault(t => t.ID == todo.ID && t.TodoList.UserId == userId);
 
             if (existingTodo != null)
             {
@@ -61,7 +60,7 @@ namespace TodoApp.Repositories
 
         public IEnumerable<Todo> GetTodosByListId(int listId)
         {
-            return _context.Todo.Where(t => t.ListID == listId).ToList();
+            return _context.Todo.Where(t => t.ListID == listId).AsQueryable();
         }
     }
 }

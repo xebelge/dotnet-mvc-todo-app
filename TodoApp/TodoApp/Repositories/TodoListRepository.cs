@@ -18,7 +18,9 @@ public class TodoListRepository : ITodoListRepository
     public IEnumerable<TodoList> GetTodoLists()
     {
         var userId = _userHelper.GetCurrentUserId();
-        return _context.TodoList.Where(tl => tl.UserId == userId).ToList();
+        return _context.TodoList
+            .Where(tl => tl.UserId == userId)
+            .ToList();
     }
 
     public TodoList GetTodoListById(int id)
@@ -40,11 +42,9 @@ public class TodoListRepository : ITodoListRepository
     public void UpdateTodoList(TodoList todoList)
     {
         var userId = _userHelper.GetCurrentUserId();
-        var existingTodoList = _context.TodoList
-            .Include(tl => tl.Todos)
-            .FirstOrDefault(tl => tl.ID == todoList.ID && tl.UserId == userId);
+        var existingTodoList = GetTodoListById(todoList.ID);
 
-        if (existingTodoList != null)
+        if (existingTodoList != null && existingTodoList.UserId == userId)
         {
             existingTodoList.Title = todoList.Title;
             _context.SaveChanges();
@@ -64,7 +64,9 @@ public class TodoListRepository : ITodoListRepository
 
     public IEnumerable<TodoList> GetTodoListsByUserId(string userId)
     {
-        return _context.TodoList.Where(t => t.UserId == userId).ToList();
+        return _context.TodoList
+            .Where(t => t.UserId == userId)
+            .ToList();
     }
 
     public IEnumerable<Todo> GetTodosForList(int todoListId)
