@@ -17,3 +17,16 @@ body {
   margin-bottom: 60px;
 }
 
+.container {
+    margin-top: 50px;
+}
+
+.display-4 {
+    color: steelblue;
+}
+
+.lead {
+    color: #666;
+    font-size: 18px;
+    margin-top: 20px;
+}
