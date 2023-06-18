@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using TodoApp.Models;
 using TodoApp.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TodoApp.Controllers
 {
@@ -9,11 +10,13 @@ namespace TodoApp.Controllers
     {
         private readonly ITodoRepository _todoRepository;
         private readonly ITodoListRepository _todoListRepository;
+        private readonly UserHelper _userHelper;
 
-        public TodoController(ITodoRepository todoRepository, ITodoListRepository todoListRepository)
+        public TodoController(ITodoRepository todoRepository, ITodoListRepository todoListRepository, UserHelper userHelper)
         {
             _todoRepository = todoRepository;
             _todoListRepository = todoListRepository;
+            _userHelper = userHelper;
         }
 
         [HttpGet]
@@ -36,8 +39,8 @@ namespace TodoApp.Controllers
         [HttpPost]
         public IActionResult Create(Todo todo)
         {
-                _todoRepository.Add(todo);
-                return RedirectToAction("ShowTodos", "TodoList", new { id = todo.ListID });
+            _todoRepository.Add(todo);
+            return RedirectToAction("ShowTodos", "TodoList", new { id = todo.ListID });
         }
 
         [HttpGet]
@@ -55,7 +58,7 @@ namespace TodoApp.Controllers
         [HttpPost]
         public IActionResult Edit(Todo todo)
         {
-                _todoRepository.Update(todo);
+            _todoRepository.Update(todo);
             return RedirectToAction("ShowTodos", "TodoList", new { id = todo.ListID });
         }
 

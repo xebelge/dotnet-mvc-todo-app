@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using TodoApp.Models;
 using TodoApp.Repositories;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace TodoApp.Controllers
 {
@@ -10,11 +11,13 @@ namespace TodoApp.Controllers
     {
         private readonly ITodoListRepository _todoListRepository;
         private readonly ITodoRepository _todoRepository;
+        private readonly UserHelper _userHelper;
 
-        public TodoListController(ITodoListRepository todoListRepository, ITodoRepository todoRepository, UserManager<IdentityUser> userManager)
+        public TodoListController(ITodoListRepository todoListRepository, ITodoRepository todoRepository, UserHelper userHelper)
         {
             _todoListRepository = todoListRepository;
-            _todoRepository = todoRepository;            
+            _todoRepository = todoRepository;
+            _userHelper = userHelper;
         }
 
         public IActionResult Index()
@@ -31,6 +34,7 @@ namespace TodoApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TodoList todoList)
         {
+            todoList.UserId = _userHelper.GetCurrentUserId();
             _todoListRepository.AddTodoList(todoList);
             return RedirectToAction("Index");
         }
