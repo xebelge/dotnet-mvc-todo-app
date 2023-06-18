@@ -11,16 +11,18 @@ namespace TodoApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ITodoListRepository _todoListRepository;
+        private readonly UserHelper _userHelper;
 
-        public HomeController(ILogger<HomeController> logger, ITodoListRepository todoListRepository)
+        public HomeController(ILogger<HomeController> logger, ITodoListRepository todoListRepository, UserHelper userHelper)
         {
             _logger = logger;
             _todoListRepository = todoListRepository;
+            _userHelper = userHelper;
         }
 
         public IActionResult Index()
         {
-            var userId = GetCurrentUserId();
+            var userId = _userHelper.GetCurrentUserId();
             var todoLists = _todoListRepository.GetTodoListsByUserId(userId);
             return View(todoLists);
         }
@@ -34,12 +36,6 @@ namespace TodoApp.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        private string GetCurrentUserId()
-        {
-            var userIdString = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return userIdString;
         }
     }
 }
